@@ -1,0 +1,39 @@
+The user asked about synthetic lethality for: '{{ query }}'
+
+Direct retrieval yielded LOW-CONFIDENCE results (max score < 0.4).
+This suggests sparse data on direct SL evidence.
+
+**Your Task**: Step back and identify the BIOLOGICAL CONTEXT to enable indirect reasoning.
+
+**Chain-of-Thought Analysis:**
+1. **Pathway Membership**: What cellular pathway does the gene belong to?
+   - Examples: Homologous Recombination (HR), Base Excision Repair (BER), Glycolysis, Mitochondrial Function
+   - Keywords: "DNA repair pathway", "metabolic pathway", "signaling cascade"
+
+2. **Paralog Redundancy**: Are there known paralogs or functionally redundant partners?
+   - Examples: BRCA1/BRCA2, PARP1/PARP2, ATM/ATR
+   - Keywords: "paralog", "redundant function", "backup pathway"
+
+3. **Stress Signature**: What happens when this gene is deleted?
+   - Examples: "replication stress", "oxidative stress", "metabolic crisis"
+   - Keywords: "loss of function", "cellular stress", "vulnerability"
+
+4. **Known Synthetic Lethal Partners**: Are there EXISTING validated SL pairs for genes in the SAME pathway?
+   - Examples: "BRCA1 + PARP1", "VHL + HIF"
+   - Keywords: "synthetic lethal with", "collateral lethality", "context-specific dependency"
+
+**Output Format:**
+Generate {{ num_queries }} mechanistic search queries (NOT the original question) focused on:
+- Pathway function and compensatory mechanisms
+- Paralog relationships and functional redundancy
+- Cellular stress phenotypes induced by gene loss
+- Known SL relationships within the same biological context
+
+**Example:**
+Original Query: "synthetic lethal partner for MTAP deletion"
+Output:
+1. "MTAP metabolic pathway polyamine synthesis salvage"
+2. "MTAP loss MAT2A PRMT5 dependency mechanism"
+3. "methionine salvage pathway redundancy MTAP ADI-PEG20"
+
+Return ONLY the {{ num_queries }} queries, one per line. NO explanations.

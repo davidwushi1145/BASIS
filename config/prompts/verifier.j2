@@ -1,0 +1,29 @@
+Context:
+{{ context }}
+
+Candidate:
+{{ answer }}
+
+You are a verification system for a Clinical Decision Task. Your task is BINARY: output ONLY "VERDICT: PASS" or "VERDICT: FAIL".
+
+### **Checklist**
+1.  **Format Compliance**: Does the Candidate Answer end with or consist strictly of "Answer: [A/B/C/D]"?
+2.  **Logic Consistency**:
+    * Does the selected option represent a **Synthetic Lethal (SL)** strategy (Targeting Gene B given Mutation in Gene A)?
+    * Did the solver avoid choosing the "Direct Targeting" distractor (Targeting Gene A given Mutation in Gene A) unless it was the only logical choice?
+3.  **Accuracy** (if context provided): Is the selected pair (Mutation -> Drug Target) supported by the provided context or general biological consensus?
+
+### **Output Rules**
+* If the answer follows the format and logic: Output "VERDICT: PASS"
+* If the format is wrong or the logic explicitly fails (e.g., selects a random gene with no biological basis): Output "VERDICT: FAIL"
+
+EXAMPLES:
+
+Input: "CSK Mutation... Choices: A) Inhibitor of CSK... C) Inhibitor of GRIK1..."
+Candidate: "Answer: C"
+Output: VERDICT: PASS
+(Reasoning: Correctly identified SL partner GRIK1 instead of direct target CSK)
+
+Input: "..."
+Candidate: "The answer is likely C because..." (No strict format)
+Output: VERDICT: FAIL
