@@ -68,6 +68,8 @@ SL-Agent is a neuro-symbolic pipeline designed to improve scientific reliability
 - Priority-based context assembly (evidence hierarchy)
 - Solver-Verifier loop for grounded drafting and iterative self-correction
 
+![sl-agent](https://raw.githubusercontent.com/davidwushi1145/photo2/main/202603022149959.jpg)
+
 ## Data Availability
 
 The benchmark task files (`sl_bench/task/*.jsonl`) are included in this repository. Running SL-Agent and reproducing the full retrieval stack additionally requires several data artifacts (listed below). Download links is https://drive.google.com/file/d/16U_F3N3fL8QL5ALR9rhyaYkYGha6NVJB/view?usp=sharing.
